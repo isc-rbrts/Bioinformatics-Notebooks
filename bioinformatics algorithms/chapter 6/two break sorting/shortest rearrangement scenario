@@ -1,0 +1,12 @@
+ShortestRearrangementScenario(P, Q)
+     output P
+     RedEdges ← ColoredEdges(P)
+     BlueEdges ← ColoredEdges(Q)
+     BreakpointGraph ← the graph formed by RedEdges and BlueEdges
+     while BreakpointGraph has a non-trivial cycle Cycle
+          (i1 , i2 , i3 , i4 ) ← path starting at arbitrary red edge in nontrivial red-blue cycle
+          RedEdges ← RedEdges with edges (i1, i2) and (i3, i4) removed
+          RedEdges ← RedEdges with edges (i1, i4) and (i2, i3) added
+          BreakpointGraph ← the graph formed by RedEdges and BlueEdges
+          P ← 2-BreakOnGenome(P, i1 , i2 , i4 , i3 )
+          output P
